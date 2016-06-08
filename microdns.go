@@ -38,7 +38,7 @@ func main() {
 
 func handleRequest(w dns.ResponseWriter, r *dns.Msg) {
 	ip, _, _ := net.SplitHostPort(w.RemoteAddr().String())
-	fmt.Printf("%s,%s\n", ip, r.Question[0].Name)
+	fmt.Printf("%s\t%s\n", ip, r.Question[0].Name)
 	m := new(dns.Msg)
 	m.SetReply(r)
 	m.Authoritative = true
