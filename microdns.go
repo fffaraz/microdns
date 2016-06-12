@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/miekg/dns"
 	"log"
 	"net"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/miekg/dns"
 )
 
 func main() {
