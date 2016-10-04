@@ -32,7 +32,7 @@ fffaraz/microdns:latest \
 -log
 ```
 
-Running with using a config file:
+Running using a config file:
 ```
 docker run -d --restart=always -p 53:53 -p 53:53/udp --name microdns \
 -v /home/microdns:/home \
