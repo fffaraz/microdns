@@ -26,6 +26,11 @@ func main() {
 	flag.BoolVar(&logflag, "log", false, "Log to stdout")
 	flag.StringVar(&conf, "conf", "", "Config File")
 	flag.Parse()
+	fmt.Printf("ipv4: %s\n", ipv4)
+	fmt.Printf("ipv6: %s\n", ipv6)
+	fmt.Printf("ttl : %d\n", ttl)
+	fmt.Printf("log : %t\n", logflag)
+	fmt.Printf("conf: %s\n", conf)
 	file, err := os.Open(conf)
 	if err != nil {
 		fmt.Println(err)
