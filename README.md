@@ -1,5 +1,5 @@
 # MicroDNS
-A tiny dockerized DNS server in Go that always returns the same IP for any query sent to it.
+A tiny dockerized DNS server in Go that (almost) always returns the same IP for any query sent to it.
 
 ## Options
 
