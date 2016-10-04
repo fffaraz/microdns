@@ -15,6 +15,7 @@ import (
 
 var ipv4, ipv6, conf string
 var ttl int
+var logflag bool
 var mapv4 map[string]string
 var mapv6 map[string]string
 
@@ -22,6 +23,7 @@ func main() {
 	flag.StringVar(&ipv4, "ipv4", "127.0.0.1", "IPv4 Address")
 	flag.StringVar(&ipv6, "ipv6", "::1", "IPv6 Address")
 	flag.IntVar(&ttl, "ttl", 86400, "Time to live")
+	flag.BoolVar(&logflag, "log", false, "Log to stdout")
 	flag.StringVar(&conf, "conf", "", "Config File")
 	flag.Parse()
 	file, err := os.Open(conf)
@@ -40,7 +42,7 @@ func main() {
 			mapv6[fields[0]] = fields[2]
 		}
 	}
-	//fmt.Println("\n---\n")
+	fmt.Println("")
 	dns.HandleFunc(".", handleRequest)
 	go func() {
 		srv := &dns.Server{Addr: ":53", Net: "udp"}
@@ -68,8 +70,10 @@ func main() {
 
 func handleRequest(w dns.ResponseWriter, r *dns.Msg) {
 	domain := r.Question[0].Name
-	//ip, _, _ := net.SplitHostPort(w.RemoteAddr().String())
-	//fmt.Printf("%s\t%s\n", ip, domain)
+	if logflag {
+		ip, _, _ := net.SplitHostPort(w.RemoteAddr().String())
+		fmt.Printf("%s\t%s\n", ip, domain)
+	}
 	m := new(dns.Msg)
 	m.SetReply(r)
 	m.Authoritative = true
