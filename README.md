@@ -6,6 +6,15 @@ docker run -d --restart=always -p 53:53 -p 53:53/udp --name microdns \
 fffaraz/microdns:latest \
 -ipv4 127.0.0.1 \
 -ipv6 ::1 \
+-ttl 86400
+```
+
+```
+docker run -d --restart=always -p 53:53 -p 53:53/udp --name microdns \
+-v /home/microdns:/home \
+fffaraz/microdns:latest \
+-ipv4 127.0.0.1 \
+-ipv6 ::1 \
 -ttl 86400 \
 -conf /home/dns.conf
 ```
