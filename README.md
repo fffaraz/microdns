@@ -47,5 +47,6 @@ fffaraz/microdns:latest \
 ## Request Stats
 
 ```
-cat log.out | cut -f1 | sort | uniq -cd | sort -nr
+IP Adresses: cat log.out | cut -f1 | sort | uniq -cd | sort -nr
+Domains:     cat log.out | cut -f2 | sort | uniq -cd | sort -nr
 ```
