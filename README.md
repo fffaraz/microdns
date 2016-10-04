@@ -11,6 +11,15 @@ A tiny dockerized DNS server in Go that always returns the same IP for any query
 	-conf		Config file (default: /home/dns.conf)
 ```
 
+## Config file format
+
+```
+domain1.com. [tab] ipv4 [tab] ipv6
+domain2.com. [tab] ipv4 [tab] ipv6
+www.domain1.com. [tab] ipv4 [tab] ipv6
+ftp.domain2.com. [tab] ipv4 [tab] ipv6
+```
+
 ## How to Run
 
 Running without using a config file:
