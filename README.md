@@ -44,6 +44,8 @@ fffaraz/microdns:latest \
 -conf /home/dns.conf
 ```
 
+## Request Stats
+
 ```
 cat log.out | cut -f1 | sort | uniq -cd | sort -nr
 ```
