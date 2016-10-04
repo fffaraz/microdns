@@ -13,6 +13,7 @@ A tiny dockerized DNS server in Go that always returns the same IP for any query
 
 ## How to Run
 
+Running without using a config file:
 ```
 docker run -d --restart=always -p 53:53 -p 53:53/udp --name microdns \
 fffaraz/microdns:latest \
@@ -22,6 +23,7 @@ fffaraz/microdns:latest \
 -log
 ```
 
+Running with using a config file:
 ```
 docker run -d --restart=always -p 53:53 -p 53:53/udp --name microdns \
 -v /home/microdns:/home \
