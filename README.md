@@ -4,9 +4,9 @@ A tiny dockerized DNS server in Go that always returns the same IP for any query
 ## Options
 
 ```
-	-ipv4		IPv4 to return (default: 127.0.0.1)
-	-ipv6		IPv6 to return (default: ::1)
-	-ttl		Time to live (default: 86400)
+	-ipv4		Default IPv4 to return (default: 127.0.0.1)
+	-ipv6		Default IPv6 to return (default: ::1)
+	-ttl		Time to live value (default: 86400)
 	-log		Log requests to stdout (default: false)
 	-conf		Config file (default: /home/dns.conf)
 ```
