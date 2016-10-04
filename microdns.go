@@ -31,6 +31,7 @@ func main() {
 	fmt.Printf("ttl : %d\n", ttl)
 	fmt.Printf("log : %t\n", logflag)
 	fmt.Printf("conf: %s\n", conf)
+	fmt.Println("")
 	file, err := os.Open(conf)
 	if err != nil {
 		fmt.Println(err)
