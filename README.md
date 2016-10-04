@@ -7,7 +7,7 @@ fffaraz/microdns:latest \
 -ipv4 127.0.0.1 \
 -ipv6 ::1 \
 -ttl 86400 \
--log true
+-log
 ```
 
 ```
@@ -17,7 +17,7 @@ fffaraz/microdns:latest \
 -ipv4 127.0.0.1 \
 -ipv6 ::1 \
 -ttl 86400 \
--log true \
+-log \
 -conf /home/dns.conf
 ```
 
