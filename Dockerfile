@@ -6,4 +6,4 @@ RUN \
 	apk add --update --no-cache git && \
 	go get github.com/fffaraz/microdns && \
 	apk del git pcre expat libcurl libssh2 && \
-	rm -rf /go/pkg /go/src /var/cache/apk /usr/local/go
+	rm -rf /go/pkg /go/src /var/cache/apk/*
