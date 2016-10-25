@@ -1,6 +1,8 @@
 # MicroDNS
 A tiny dockerized DNS server in Go that (almost) always returns the same IP for any query sent to it.
 
+[![](http://dockeri.co/image/fffaraz/microdns)](https://hub.docker.com/r/fffaraz/microdns/)
+
 ## Options
 
 ```
