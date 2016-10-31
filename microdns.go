@@ -1,3 +1,5 @@
+// go build -ldflags "-extldflags '-lm -lstdc++ -static'" .
+
 package main
 
 import (
