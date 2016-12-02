@@ -24,10 +24,10 @@ docker run -it --rm -p 53:53 -p 53:53/udp fffaraz/microdns:latest -log \
 ## Config file format
 
 ```
-domain1.com. [tab] ipv4 [tab] ipv6
-domain2.com. [tab] ipv4 [tab] ipv6
-www.domain1.com. [tab] ipv4 [tab] ipv6
-ftp.domain2.com. [tab] ipv4 [tab] ipv6
+domain1.com.     127.0.0.1 ::1
+domain2.com.     127.0.0.1 ::1
+www.domain1.com. 127.0.0.1 ::1
+ftp.domain2.com. 127.0.0.1 ::1
 ```
 
 ## How to Run
