@@ -6,11 +6,9 @@ A tiny dockerized DNS server in Go that (almost) always returns the same IP for 
 ## TL;DR
 
 ```
-docker run -it --rm -p 53:53 -p 53:53/udp --name microdns \
-fffaraz/microdns:latest \
+docker run -it --rm -p 53:53 -p 53:53/udp fffaraz/microdns:latest -log \
 -ipv4 $(dig +short myip.opendns.com @resolver1.opendns.com) \
--ipv6 $(dig +short myip.opendns.com @2620:0:ccc::2 aaaa) \
--log
+-ipv6 $(dig +short myip.opendns.com @2620:0:ccc::2 aaaa)
 ```
 
 ## Options
