@@ -46,10 +46,8 @@ func main() {
 			for scanner.Scan() {
 				line := scanner.Text()
 				if ! strings.HasPrefix(line, "#") {
-					fmt.Println(line)
-					fields := strings.FieldsFunc(line, func (r rune) bool {
-						return r == ' ' || r == '\t'
-					})
+					fields := strings.Fields(line)
+					fmt.Printf("%q\n", fields)
 					mapv4[fields[0]] = fields[1]
 					mapv6[fields[0]] = fields[2]
 				}
