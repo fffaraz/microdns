@@ -3,6 +3,16 @@ A tiny dockerized DNS server in Go that (almost) always returns the same IP for 
 
 [![](http://dockeri.co/image/fffaraz/microdns)](https://hub.docker.com/r/fffaraz/microdns/)
 
+## TL;DR
+
+```
+docker run -it --rm -p 53:53 -p 53:53/udp --name microdns \
+fffaraz/microdns:latest \
+-ipv4 $(dig +short myip.opendns.com @resolver1.opendns.com) \
+-ipv6 $(dig +short myip.opendns.com @2620:0:ccc::2 aaaa) \
+-log
+```
+
 ## Options
 
 ```
@@ -24,17 +34,6 @@ ftp.domain2.com. [tab] ipv4 [tab] ipv6
 
 ## How to Run
 
-Running without using a config file:
-```
-docker run -d --restart=always -p 53:53 -p 53:53/udp --name microdns \
-fffaraz/microdns:latest \
--ipv4 127.0.0.1 \
--ipv6 ::1 \
--ttl 86400 \
--log
-```
-
-Running using a config file:
 ```
 docker run -d --restart=always -p 53:53 -p 53:53/udp --name microdns \
 -v /home/microdns:/home \
