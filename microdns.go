@@ -34,23 +34,29 @@ func main() {
 	fmt.Printf("log : %t\n", logflag)
 	fmt.Printf("conf: %s\n", conf)
 	fmt.Println("")
-	file, err := os.Open(conf)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		defer file.Close()
-		mapv4 = make(map[string]string)
-		mapv6 = make(map[string]string)
-		scanner := bufio.NewScanner(file)
-		for scanner.Scan() {
-			line := scanner.Text()
-			fmt.Println(line)
-			fields := strings.Split(line, "\t")
-			mapv4[fields[0]] = fields[1]
-			mapv6[fields[0]] = fields[2]
+	if _, err := os.Stat(conf); err == nil {
+		file, err := os.Open(conf)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			defer file.Close()
+			mapv4 = make(map[string]string)
+			mapv6 = make(map[string]string)
+			scanner := bufio.NewScanner(file)
+			for scanner.Scan() {
+				line := scanner.Text()
+				if ! strings.HasPrefix(line, "#") {
+					fmt.Println(line)
+					fields := strings.FieldsFunc(line, func (r rune) bool {
+						return r == ' ' || r == '\t'
+					})
+					mapv4[fields[0]] = fields[1]
+					mapv6[fields[0]] = fields[2]
+				}
+			}
 		}
+		fmt.Println("")
 	}
-	fmt.Println("")
 	dns.HandleFunc(".", handleRequest)
 	go func() {
 		srv := &dns.Server{Addr: ":53", Net: "udp"}
