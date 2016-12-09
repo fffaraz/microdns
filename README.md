@@ -49,3 +49,10 @@ fffaraz/microdns:latest \
 IP Adresses: cat log.out | cut -f1 | sort | uniq -cd | sort -nr
 Domains:     cat log.out | cut -f2 | sort | uniq -cd | sort -nr
 ```
+
+## Digital Ocean Metadata API
+
+```
+curl http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address
+curl http://169.254.169.254/metadata/v1/interfaces/public/0/ipv6/address
+```
