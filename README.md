@@ -12,7 +12,7 @@ docker run -it --rm -p 53:53 -p 53:53/udp fffaraz/microdns:latest -log \
 -ipv6 $(dig +short myip.opendns.com @2620:0:ccc::2 aaaa)
 ```
 
-## Options
+## Arguments & Options
 
 ```
 	-ipv4		Default IPv4 to return (default: 127.0.0.1)
