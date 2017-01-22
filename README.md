@@ -4,7 +4,7 @@ A tiny dockerized DNS server in Go that (almost) always returns the same IP for 
 [![](http://dockeri.co/image/fffaraz/microdns)](https://hub.docker.com/r/fffaraz/microdns/)
 [![](https://images.microbadger.com/badges/image/fffaraz/microdns.svg)](https://microbadger.com/images/fffaraz/microdns)
 
-## TL;DR
+## Quick Start (TL;DR)
 
 ```
 docker run -it --rm -p 53:53 -p 53:53/udp fffaraz/microdns:latest -log \
