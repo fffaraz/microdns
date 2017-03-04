@@ -51,7 +51,7 @@ IP Adresses: cat log.out | cut -f1 | sort | uniq -cd | sort -nr
 Domains:     cat log.out | cut -f2 | sort | uniq -cd | sort -nr
 ```
 
-## Digital Ocean Metadata API
+## Metadata API
 
 ```
 curl http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address
