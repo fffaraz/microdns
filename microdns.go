@@ -48,8 +48,10 @@ func main() {
 				if ! strings.HasPrefix(line, "#") {
 					fields := strings.Fields(line)
 					fmt.Printf("%q\n", fields)
-					mapv4[fields[0]] = fields[1]
-					mapv6[fields[0]] = fields[2]
+					if len(fields) == 3 {
+						mapv4[fields[0]] = fields[1]
+						mapv6[fields[0]] = fields[2]
+					}
 				}
 			}
 		}
