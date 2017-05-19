@@ -12,6 +12,7 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
+	"time"
 	"github.com/miekg/dns"
 )
 
@@ -37,7 +38,7 @@ func main() {
 	if _, err := os.Stat(conf); err == nil {
 		file, err := os.Open(conf)
 		if err != nil {
-			fmt.Println(err)
+			fmt.Printf("err : %s\n", err)
 		} else {
 			defer file.Close()
 			mapv4 = make(map[string]string)
@@ -47,7 +48,7 @@ func main() {
 				line := scanner.Text()
 				if ! strings.HasPrefix(line, "#") {
 					fields := strings.Fields(line)
-					fmt.Printf("%q\n", fields)
+					fmt.Printf("line: %q\n", fields)
 					if len(fields) == 3 {
 						mapv4[fields[0]] = fields[1]
 						mapv6[fields[0]] = fields[2]
@@ -85,8 +86,10 @@ func main() {
 func handleRequest(w dns.ResponseWriter, r *dns.Msg) {
 	domain := r.Question[0].Name
 	if logflag {
+		t := time.Now()
 		ip, _, _ := net.SplitHostPort(w.RemoteAddr().String())
-		fmt.Printf("%s\t%s\n", ip, domain)
+		fmt.Printf("%d-%02d-%02d_%02d:%02d:%02d\t%s\t%s\n", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), ip, domain)
+		// TODO: log to file
 	}
 	m := new(dns.Msg)
 	m.SetReply(r)
