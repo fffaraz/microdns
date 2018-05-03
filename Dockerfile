@@ -1,9 +1,6 @@
-FROM golang:alpine
-MAINTAINER Faraz Fallahi <fffaraz@gmail.com>
-EXPOSE 53/udp 53/tcp
+FROM golang:alpine AS builder
+RUN apk add --update git && go get github.com/fffaraz/microdns
+
+FROM alpine:latest
+COPY --from=builder /go/bin/microdns /usr/local/bin
 ENTRYPOINT ["microdns"]
-RUN \
-	apk add --update --no-cache git && \
-	go get github.com/fffaraz/microdns && \
-	apk del git pcre expat libcurl libssh2 && \
-	rm -rf /go/pkg /go/src /var/cache/apk/*
