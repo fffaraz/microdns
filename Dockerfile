@@ -1,6 +1,9 @@
 FROM golang:alpine AS builder
-RUN apk add --update git && go get github.com/fffaraz/microdns
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 go build -ldflags="-w -s" .
 
-FROM alpine:latest
-COPY --from=builder /go/bin/microdns /usr/local/bin
+FROM scratch
+COPY --from=builder /app/microdns /usr/local/bin
+EXPOSE 53
 ENTRYPOINT ["microdns"]
